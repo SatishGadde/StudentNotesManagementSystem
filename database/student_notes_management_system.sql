@@ -195,14 +195,14 @@ INSERT INTO `subject` (`subcode`, `subname`, `deptid`, `sem`) VALUES
 --
 ALTER TABLE `department`
   ADD PRIMARY KEY (`deptid`),
-  ADD KEY `department_ibfk_1` (`mgrid`);
+ 
 
 --
 -- Indexes for table `faculty`
 --
 ALTER TABLE `faculty`
   ADD PRIMARY KEY (`fid`),
-  ADD KEY `faculty_ibfk_1` (`deptid`);
+  
 
 --
 -- Indexes for table `notes`
@@ -215,14 +215,14 @@ ALTER TABLE `notes`
 --
 ALTER TABLE `student`
   ADD PRIMARY KEY (`usn`),
-  ADD KEY `student_ibfk_1` (`deptid`);
+  
 
 --
 -- Indexes for table `subject`
 --
 ALTER TABLE `subject`
   ADD PRIMARY KEY (`subcode`),
-  ADD KEY `subject_ibfk_1` (`deptid`);
+ 
 
 --
 -- Constraints for dumped tables
@@ -232,31 +232,31 @@ ALTER TABLE `subject`
 -- Constraints for table `department`
 --
 ALTER TABLE `department`
-  ADD CONSTRAINT `department_ibfk_1` FOREIGN KEY (`mgrid`) REFERENCES `faculty` (`fid`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD  FOREIGN KEY (`mgrid`) REFERENCES `faculty` (`fid`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `faculty`
 --
 ALTER TABLE `faculty`
-  ADD CONSTRAINT `faculty_ibfk_1` FOREIGN KEY (`deptid`) REFERENCES `department` (`deptid`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD  FOREIGN KEY (`deptid`) REFERENCES `department` (`deptid`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `notes`
 --
 ALTER TABLE `notes`
-  ADD CONSTRAINT `notes_ibfk_1` FOREIGN KEY (`subcode`) REFERENCES `subject` (`subcode`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD  FOREIGN KEY (`subcode`) REFERENCES `subject` (`subcode`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `student`
 --
 ALTER TABLE `student`
-  ADD CONSTRAINT `student_ibfk_1` FOREIGN KEY (`deptid`) REFERENCES `department` (`deptid`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD  FOREIGN KEY (`deptid`) REFERENCES `department` (`deptid`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `subject`
 --
 ALTER TABLE `subject`
-  ADD CONSTRAINT `subject_ibfk_1` FOREIGN KEY (`deptid`) REFERENCES `department` (`deptid`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD  FOREIGN KEY (`deptid`) REFERENCES `department` (`deptid`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
